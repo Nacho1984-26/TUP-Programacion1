@@ -1,2 +1,2 @@
-# Programaci-n--1-Cuatrimestre
+# Programacion1-1er-Cuatrimestre
 Entrega de trabajos y actividades
