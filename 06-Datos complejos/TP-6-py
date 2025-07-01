@@ -1,0 +1,328 @@
+# Trabajo práctico N°6: Datos Complejos
+
+'''
+1) Dado el diccionario precios_frutas 
+precios_frutas = {'Banana': 1200, 'Ananá': 2500, 'Melón': 3000, 'Uva': 1450} 
+Añadir las siguientes frutas con sus respectivos precios: 
+● Naranja = 1200 
+● Manzana = 1500 
+● Pera = 2300 
+'''
+print("Ejercicio 1\n")
+
+# Diccionario original precios_frutas
+precios_frutas = {'Banana': 1200, 'Ananá': 2500, 'Melón': 3000, 'Uva': 1450}
+
+# Se imprime diccionario original
+print(precios_frutas)
+
+# Se añaden las frutas solicitadas al diccionario precios_frutas
+precios_frutas['Naranja'] = 1200
+precios_frutas['Manzana'] = 1500
+precios_frutas['Pera'] = 2300
+
+# Se imprime el dicionario precios_frutas actualizado
+print('\n') # se realiza salto de línea para mejor visibilidad
+print(precios_frutas)
+
+
+'''
+2) Siguiendo con el diccionario precios_frutas que resulta luego de ejecutar el código desarrollado 
+en el punto anterior, actualizar los precios de las siguientes frutas: 
+● Banana = 1330 
+● Manzana = 1700 
+● Melón = 2800 
+'''
+
+
+print("\n\n\nEjercicio 2\n")
+
+# Se modifican valores (precios) de las llaves solicitados
+precios_frutas['Banana'] = 1330
+precios_frutas['Manzana'] = 1700
+precios_frutas['Melón'] = 2800
+
+# Se imprime el dicionario precios_frutas con los precios actualizados.
+print(precios_frutas)
+
+
+'''
+3) Siguiendo con el diccionario precios_frutas que resulta luego de ejecutar el código 
+desarrollado en el punto anterior, crear una lista que contenga únicamente las frutas sin los 
+precios.
+'''
+print("\n\n\nEjercicio 3\n")
+
+# Se crea la lista solicitada
+lista_frutas = ['Banana', 'Ananá', 'Melón', 'Uva', 'Naranja', 'Manzana', 'Pera']
+
+# Se imprime la lista solicitada
+print(lista_frutas)
+
+
+
+'''
+4) Escribí un programa que permita almacenar y consultar números telefónicos. 
+• Permití al usuario cargar 5 contactos con su nombre como clave y número como valor. 
+• Luego, pedí un nombre y mostrale el número asociado, si existe. 
+'''
+print("\n\n\nEjercicio 4\n")
+
+# Se crea el diccionario "contactos", que almacena contactos telefónicos
+contactos = {}
+
+# Se utiliza un 'for' de 5 iteraciones para almacenar los 5 datos solicitados
+for i in range(5):
+    # Se solicitan los datos (llave, valor) requeridos
+    nombre = input("Ingresa el nombre del contanto que quieres guardar: ").lower()
+    numero = int(input("Ingresa el número de teléfono de la persona: "))
+
+    # Se guardan los datos ingresados en el diccioneario 'contactos'
+    contactos[nombre] = numero
+
+# Se solicita el nombre a investigar
+nombre = input("\nIngresa el nombre del contacto del cuál quieres saber su número: ").lower()
+
+# ....
+if nombre in contactos:
+    print(f"El número telefónico de {nombre} es: {contactos[nombre]}")
+else:
+    print("El nombre ingresado no se encuentra dentro de tus contactos.")
+
+
+
+'''
+5) Solicita al usuario una frase e imprime: 
+• Las palabras únicas (usando un set). 
+• Un diccionario con la cantidad de veces que aparece cada palabra. 
+'''
+print("\n\n\nEjercicio 5\n")
+
+import string  # Importamos el módulo para acceder a signos de puntuación
+
+frase = input("Ingresa una frase: ")
+
+# Convertimos la frase a minúsculas y eliminamos signos de puntuación
+frase_limpia = frase.lower().translate(str.maketrans("", "", string.punctuation))
+
+# Obtenemos las palabras como una lista
+palabras = frase_limpia.split()
+
+# Creamos un set con las palabras únicas
+set_de_palabras = set(palabras)
+print("Palabras únicas:", ", ".join(set_de_palabras))
+
+# Creamos un diccionario para contar la frecuencia de cada palabra
+contador_palabras = {}
+
+for palabra in palabras:  # Recorremos cada palabra en la lista
+    if palabra in contador_palabras:
+        contador_palabras[palabra] += 1  # Si ya existe, aumentamos el contador
+    else:
+        contador_palabras[palabra] = 1   # Si no, la agregamos con valor 1
+
+# Mostramos los resultados
+print("Frecuencia de palabras:")
+for palabra, cantidad in contador_palabras.items():
+    print(f"{palabra}: {cantidad}")
+
+
+
+
+'''
+6) Permití ingresar los nombres de 3 alumnos, y para cada uno una tupla de 3 notas. 
+Luego, mostrá el promedio de cada alumno. 
+'''
+print("\n\n\nEjercicio 6\n")
+
+# Diccionario vacío que almacenará nomres de los estudiantes y sus respectivos promedios.
+estudiantes = {}  
+# Se utiliza un for para solicitar los datos de los tres estudiantes
+for i in range(3):
+    
+    acumulador = 0 # Acumuluador para posteriormente obtener el promedio
+
+    nombre = input("\nIngresa el nombre del estudiante: ") # Se solicita nombre del estudiante
+    
+    notas = [] # Se crea lista como amacenaje provisorio para las notas
+    print(f"Ingresa las notas de {nombre}:")
+
+    # For de 3 iteraciones para almacenar en la lista vacía las tres notas del estudiante en cuestión
+    for x in range(3):
+        nota = int(input()) # Se transforma ingreso a "entero"
+
+        acumulador += nota # Se acumula la nota ingresada
+
+        notas.append(nota) # Se agrega la nota ingresada al final de la lista
+
+        estudiantes[nombre] = tuple(notas)  # Guardamos las notas como tupla
+    print(f"Las notas de {nombre} son {estudiantes[nombre]}")
+
+    estudiantes[nombre] = "{:.2f}".format(acumulador / 3) # Se reduce a dos decimales el promedio previo a la asignación.
+
+print(f"Los promedios de los estudiantes son los siguientes: {estudiantes}")
+
+
+
+'''
+7) Dado dos sets de números, representando dos listas de estudiantes que aprobaron Parcial 1 
+y Parcial 2: 
+• Mostrá los que aprobaron ambos parciales. 
+• Mostrá los que aprobaron solo uno de los dos. 
+• Mostrá la lista total de estudiantes que aprobaron al menos un parcial (sin repetir).
+'''
+print("\n\n\nEjercicio 7\n")
+
+
+# Notas que representan alumnos aprobados en el parcial 1
+parcial_1 = {65, 88, 89, 70, 98, 70, 90, 65}
+
+# Notas que representan alumnos aprobados en el parcial 2
+parcial_2 = {89, 75, 85, 95, 70, 100}
+
+# Intersección de los conjuntos para determinar quienes aprobaron ambos parciales
+ambos = parcial_1 & parcial_2  
+
+print(f"Quienes aprobaron ambos parciales fueron: {ambos}\n") # Se imprime resultado
+
+
+# Diferencia simétrica de los conjuntos para determinar quienes aprobaron uno u otro parcial (pero no ambos)
+solo_uno = parcial_1 ^ parcial_2
+
+print(f"Quienes aprobaron solo uno de ambos parciales fueron: {solo_uno}\n") # Se imprime resultado
+
+
+# Unión de los conjuntos para determinar quienes aprobaron al menos uno de los parciales (sin repetir)
+al_menos_uno = parcial_1 | parcial_2
+
+print(f"Quienes aprobaron al menos uno de los parciales fueron: {al_menos_uno}\n") # Se imprime resultado
+
+
+'''
+8) Armá un diccionario donde las claves sean nombres de productos y los valores su stock. 
+Permití al usuario: 
+• Consultar el stock de un producto ingresado. 
+• Agregar unidades al stock si el producto ya existe. 
+• Agregar un nuevo producto si no existe.
+'''
+print("\n\n\nEjercicio 8\n")
+
+# Se crea el diccionario de productos
+catalogo = {
+    'televisores':24,
+    'aires acondicionados':12,
+    'lavarropas':17,
+    'estufas':32,
+    'cocinas':14,
+    'lavavajillas':7,
+    'parlantes':28
+}
+
+# Se informan los productos en el catálogo
+print("Los productos actualmente en stock son los siguientes: televisores, aires acondicionados, lavarropas, estufas, cocinas, lavavajillas y parlantes.")
+# Se solicita el ingreso del producto a informar stock
+producto = input('Ingrese el producto del cual quiera conocer su stock: ')
+producto = producto.lower() # Aseguramos/convertimos el ingreso a minúsculas
+
+print(f"Contamos con {catalogo[producto]} {producto} en nuestro stock.\n") # Se imprime la respuesta requerida
+
+
+
+# Se consulta si se modificará o no el stock y se almacena respuesta
+agregar_cantidades = input('Desea agregar unidades a alguno de los productos en stock? (si/no): ')
+agregar_cantidades = agregar_cantidades.lower() # Aseguramos/convertimos el ingreso a minúsculas
+
+if agregar_cantidades == 'si':
+    producto = input('Ingrese el producto al cual actualizará su stock: ') # Se solicita el producto a actualizar stock
+    producto = producto.lower() # Aseguramos/convertimos el ingreso a minúsculas
+    cantidad = int(input('Ingrese la cantidad de productos que desea agregar al stock: ')) # Se solicita cantidad y se convierte a "entero ese valor"
+    nueva_cantidad = int(catalogo[producto]) + cantidad # Se realiza la suma entre los productos en stock y los ingresados por el usuario
+    catalogo[producto] = nueva_cantidad # Se actualiza valor del producto en cuestión
+    print(f"Actualización realizada!. Ahora contamos con {catalogo[producto]} {producto} en nuestro stock.\n") # Se imprime la respuesta requerida
+else:
+    print('Sin modificaciones en el stock!\n') 
+
+
+# Se consulta si se ingresará un nuevo producto al catálogo
+agregar_producto = input('Desea agregar un nuevo producto al catálogo? (si/no): ')
+agregar_producto = agregar_producto.lower() # Aseguramos/convertimos el ingreso a minúsculas
+
+
+if agregar_producto == 'si':
+    producto = input('Ingrese el nuevo producto: ') # Se solicita el producto a ingresar
+    producto = producto.lower() # Aseguramos/convertimos el ingreso a minúsculas
+    cantidad = int(input('Ingrese la cantidad de productos que ingresarán al stock: ')) # Se solicita cantidad de productos a ingresar
+
+    catalogo[producto] = cantidad
+
+    print(f"Se ha agregado el producto {producto} al catálogo y las unidades en stock es de: {catalogo[producto]}.") # Se imprime la respuesta requerida
+else:
+    print('Sin modificaciones en el catálogo!\n')
+
+# Se muestra mediante un "for" el catálogo completo actualizado
+print('\nEl catálogo actualizado es el siguiente: ')
+
+for producto, cantidad in catalogo.items():
+    print(f"{producto}: {cantidad}")
+
+
+'''
+9) Creá una agenda donde las claves sean tuplas de (día, hora) y los valores sean eventos. 
+Ejemplo: 
+Permití consultar qué actividad hay en cierto día y hora.
+'''
+print("\n\n\nEjercicio 9\n")
+
+# Se crea diccionario de agenda momento-evento
+agenda = {
+    ('lunes', '9:00 hs'): 'Encuentro sincrónico de programación I',
+    ('miércoles', '15:00 hs'): 'Turno con el dentista', 
+    ('viernes', '19:00 hs'): 'Partido de fútbol con amigos', 
+    ('sábado', '10:00 hs'): 'Llevar a \"Rocko\" al veterinario'
+}
+
+# Se solicita ingreso de datos para validación
+print("¿Sobre que día y hora quieres saber el evento previsto?")
+dia = input("Ingresa el día: ").lower().strip() # Se solicita día previendo mayúsculas, minúculs y caracteres.
+hora = input("Ingresa la hora: ").lower().strip() # Se solicita hora previendo mayúsculas, minúculs y caracteres.
+
+clave = (dia, hora) # Se convierten ingresos del usuario en llave/tupla
+
+# Se evalúa si la clave se encuentra dentro de la agenda
+if clave in agenda:
+    print(f"El evento para el momento ingresado es: {agenda[clave]}")
+else:
+    print("No tienes eventos agendados para ese momento.")
+
+'''
+10) Dado un diccionario que mapea nombres de países con sus capitales, construí un nuevo 
+diccionario donde: 
+• Las capitales sean las claves. 
+• Los países sean los valores. 
+'''
+print("\n\n\nEjercicio 10\n")
+
+# Diccionario original 'países : capitales'
+paises_a_capitales = {
+    'Argentina': 'Buenos Aires',
+    'París': 'Francia',
+    'Tokio': 'Japón',
+    'España': 'Madrid',
+    'Alemania': 'Berlín',
+    'Brasil': 'Brasilia',
+    'Egipto': 'El Cairo',
+    'Estados Unidos': 'Washington D.C',
+    'Italia': 'Roma',
+    'Rusia': 'Moscú',
+    'Colombia': 'Bogotá'
+}
+
+# Variable que almacenará el diccionario "paises_a_capitales" invertido.
+capitales_a_paises = {}
+
+for pais, capital in paises_a_capitales.items(): # Se recorre el diccionario paises_a_capitales...
+    capitales_a_paises[capital] = pais # y se asignan las claves y valores invertidas en el diccionario capitales_a_paises
+
+# Se recorre el diccionario invertido mediante un for
+for capital, pais in capitales_a_paises.items():
+    print(f"{capital}: {pais}\n")
